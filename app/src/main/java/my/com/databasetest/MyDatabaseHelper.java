@@ -24,7 +24,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAT_BOOK);
         db.execSQL(CREAT_CATEGORY);
-        Toast.makeText(mContext, "Creat databases succeeded", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, "Create databases succeeded", Toast.LENGTH_SHORT).show();
 
     }
 
