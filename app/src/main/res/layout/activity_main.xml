@@ -36,5 +36,9 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="Query data"/>
+    <TextView
+        android:id="@+id/query_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
