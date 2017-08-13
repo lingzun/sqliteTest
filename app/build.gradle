@@ -17,6 +17,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+        release {
+            storeFile file("C:\\Users\\wangjf\\sensortest.jks")
+            storePassword '22221111'
+            keyAlias 'sensortest'
+            keyPassword '22221111'
+        }
+        debug {
+            storeFile file("C:\\Users\\wangjf\\sensortest.jks")
+            storePassword '22221111'
+            keyAlias 'sensortest'
+            keyPassword '22221111'
+        }}
 }
 
 dependencies {

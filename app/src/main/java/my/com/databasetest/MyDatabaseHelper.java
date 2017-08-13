@@ -10,22 +10,24 @@ import android.widget.Toast;
  */
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-//    public static final String CREATE_BOOK = "create table Book ("
+    //    public static final String CREATE_BOOK = "create table Book ("
 //      + "id integer primary key autoincrement, "
 //      + "author text, "
 //      + "price real, "
 //      + "pages integer, "
 //      + "name text)";
-      public static final String CREATE_BOOK = "create table Book ("
-        + "id integer primary key autoincrement, "
-        + "author text, "
-        + "price real, "
-        + "pages integer, "
-        + "name text)";
-    public static final String CREATE_CATEGORY="create table Category("+"id integer primary key autoincrement,"+"category_name text,"+"category_code integer)";
+    private static MyDatabaseHelper helper;
+    private static SQLiteDatabase db;
+    public static final String CREATE_BOOK = "create table Book ("
+            + "id integer primary key autoincrement, "
+            + "author text, "
+            + "price real, "
+            + "pages integer, "
+            + "name text)";
+    public static final String CREATE_CATEGORY = "create table Category(" + "id integer primary key autoincrement," + "category_name text," + "category_code integer)";
     private Context mContext;
 
-    public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
 
         mContext = context;
@@ -45,5 +47,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("drop table if exists Category");
         onCreate(db);
 
+    }
+
+    public static SQLiteDatabase getInstance(Context context) {
+        if (helper == null) {
+            helper = new MyDatabaseHelper(context, "BookStore.db", null, 1);
+        }
+        if(db==null){
+            db=helper.getWritableDatabase();
+        }
+        return db;
     }
 }
